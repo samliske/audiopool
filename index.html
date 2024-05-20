@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block content %}
+        <h1>Music Family Tree</h1>
+        <ul>
+            {% for song in songs %}
+            <li>
+                <h3>{{ song.title }} by {{ song.artist }}</h3>
+                <audio controls>
+                    <source src="{{ url_for('static', filename=song.audiopath) }}" type="audio/mpeg">
+                </audio>
+                {% if song.children %}
+                <ul>
+                    {% for child_song in song.children %}
+                    <li>
+                        <h4>Child: {{ child_song.title }} by {{ child_song.artist }}</h4>
+                        <audio controls>
+                            <source src="{{ url_for('static', filename=child_song.audio_path ) }}" type="audio/mpeg">
+                        </audio>
+                    </li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+            </li>
+            {% endfor %}
+        </ul>
+{% endblock %}

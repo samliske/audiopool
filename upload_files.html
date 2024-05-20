@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Upload Stems</title>
+</head>
+<body>
+    <h1>Upload Stems for Song ID: {{ song_id }}</h1>
+    <form method="POST" enctype="multipart/form-data">
+        <input type="file" name="stem_files" multiple>
+        <button type="submit">Upload Stems</button>
+    </form>
+</body>
+</html>
